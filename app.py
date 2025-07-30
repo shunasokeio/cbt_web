@@ -173,30 +173,23 @@ def chat():
     1.  **If the answer is ambiguous:**
         * Generate one, concise, relevant follow-up question to help the user delve deeper into this specific CBT step.
         * Provide three multiple-choice options for that question.
+        * The options must be short, direct answers to the follow-up question, not additional questions.
+        * Do NOT make the options questions themselves.
         * Personalize the question and options using the provided [User's Basic Information] and [Relevant Past Conversation].
-        * The question should be as short and concise as possible.
         * Output the response in JSON format with the keys: `"type": "follow-up"`, `"question": "your_generated_question"`, and `"options": ["option1", "option2", "option3"]`.
-
-    2.  **If the answer is sufficiently specific:**
-        * Provide a concise summary of the user's response.
-        * Output the response in JSON format with the keys: `"type": "summary"` and `"summary": "your_generated_summary"`.
-
-    # Context
-
-    ### CBT Step {step} Question
-    {cbt_question}
-
-    ### User's Answer
-    {user_input}
-
-    ### User's Basic Information
-    {user_profile}
-
-    ### Relevant Past Conversation
-    {past_conversation}
-
-    # Your Response (in JSON format)
-    """
+        * Example (correct):
+          {{
+            "type": "follow-up",
+            "question": "What time of day did this happen?",
+            "options": ["Morning", "Afternoon", "Evening"]
+          }}
+        * Example (incorrect):
+          {{
+            "type": "follow-up",
+            "question": "What time of day did this happen?",
+            "options": ["Was it in the morning?", "Could it be afternoon?", "Did it happen in the evening?"]
+          }}
+"""
     
     try:
         print(f"requesting API for step {step}")
