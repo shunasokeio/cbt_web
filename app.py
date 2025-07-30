@@ -177,18 +177,6 @@ def chat():
         * Do NOT make the options questions themselves.
         * Personalize the question and options using the provided [User's Basic Information] and [Relevant Past Conversation].
         * Output the response in JSON format with the keys: `"type": "follow-up"`, `"question": "your_generated_question"`, and `"options": ["option1", "option2", "option3"]`.
-        * Example (correct):
-          {{
-            "type": "follow-up",
-            "question": "What time of day did this happen?",
-            "options": ["Morning", "Afternoon", "Evening"]
-          }}
-        * Example (incorrect):
-          {{
-            "type": "follow-up",
-            "question": "What time of day did this happen?",
-            "options": ["Was it in the morning?", "Could it be afternoon?", "Did it happen in the evening?"]
-          }}
 """
     
     try:
