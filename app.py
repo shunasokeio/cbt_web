@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from openai import APIConnectionError, APIError, APITimeoutError
 load_dotenv()
 app = Flask(__name__)
+app.secret_key = os.environ.get('SECRET_KEY', 'your-secret-key-change-this-in-production')
 CORS(app)
 
 
