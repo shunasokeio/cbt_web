@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBT Assistant - Cognitive Behavioral Therapy</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6fb;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .landing-outer {
+            box-sizing: border-box;
+            padding: 2vw;
+            width: 100vw;
+            min-height: 100vh;
+            background: #f4f6fb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .landing-container {
+            width: 100%;
+            max-width: 1200px;
+            background: #fff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .landing-header {
+            padding: 20px;
+            background: #4f8cff;
+            color: #fff;
+            border-radius: 16px 16px 0 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .landing-content {
+            padding: 20px;
+        }
+        
+        .intro-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .intro-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .intro-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        
+        .cbt-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .step-card {
+            background: #fafbfc;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            width: 30px;
+            height: 30px;
+            background: #4f8cff;
+            color: white;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            margin-left: 50px;
+        }
+        
+        .step-description {
+            color: #666;
+            line-height: 1.4;
+            font-size: 0.9rem;
+            margin-left: 50px;
+        }
+        
+        .cta-section {
+            text-align: center;
+            background: #fafbfc;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        
+        .cta-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .cta-description {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #4f8cff;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .cta-button:hover {
+            background: #2563eb;
+        }
+        
+        .footer {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 600px) {
+            .landing-outer {
+                padding: 2.5vw;
+            }
+            .landing-container {
+                border-radius: 0.5rem;
+            }
+            .landing-header, .landing-content {
+                padding: 12px;
+            }
+            .cbt-steps {
+                grid-template-columns: 1fr;
+            }
+            .intro-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 900px) {
+            .landing-outer {
+                padding: 32px;
+            }
+            .landing-container {
+                border-radius: 1.25rem;
+            }
+            .landing-header {
+                font-size: 1.4rem;
+            }
+            .landing-content {
+                font-size: 1.15rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-outer">
+        <div class="landing-container">
+            <div class="landing-header">CBT Assistant</div>
+            <div class="landing-content">
+                <div class="intro-section">
+                    <h1 class="intro-title">Cognitive Behavioral Therapy</h1>
+                    <p class="intro-subtitle">Understanding the Five-Step Process for Better Mental Health</p>
+                </div>
+
+                <div class="cbt-steps">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Identify the Situation</h3>
+                <p class="step-description">
+                    Begin by clearly identifying the specific situation or event that triggered your emotional response. 
+                    What exactly happened? When and where did it occur? Be as specific as possible about the circumstances 
+                    that led to your current emotional state.
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Identify the Feelings</h3>
+                <p class="step-description">
+                    Recognize and name the emotions you're experiencing. Are you feeling anxious, angry, sad, frustrated, 
+                    or something else? Rate the intensity of these feelings on a scale of 1-10. Understanding your 
+                    emotional response is crucial for the CBT process.
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Identify the Thoughts</h3>
+                <p class="step-description">
+                    Examine the thoughts that are running through your mind about the situation. What are you telling 
+                    yourself? What assumptions are you making? These automatic thoughts often occur quickly and may 
+                    not be immediately obvious, so take time to reflect on them.
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3 class="step-title">Identify the Thought Distortion</h3>
+                <p class="step-description">
+                    Look for cognitive distortions in your thinking patterns. Common distortions include all-or-nothing 
+                    thinking, catastrophizing, overgeneralization, and personalization. Recognizing these patterns 
+                    helps you understand how your thoughts might be contributing to your emotional distress.
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">5</div>
+                <h3 class="step-title">Come Up with Revised Thinking/Next Action</h3>
+                <p class="step-description">
+                    Develop more balanced and realistic thoughts about the situation. Consider alternative perspectives 
+                    and evidence that might challenge your initial thoughts. Then, decide on constructive actions you 
+                    can take to address the situation or improve your emotional well-being.
+                </p>
+            </div>
+        </div>
+
+                </div>
+
+                <div class="cta-section">
+                    <h2 class="cta-title">Ready to Practice CBT?</h2>
+                    <p class="cta-description">
+                        Our AI-powered CBT assistant can help guide you through these five steps. 
+                        Start your journey toward better mental health today.
+                    </p>
+                    <a href="/chat/step1" class="cta-button">Start CBT Session</a>
+                </div>
+
+                <div class="footer">
+                    <p>&copy; 2024 CBT Assistant. This tool is designed to support, not replace, professional mental health care.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
