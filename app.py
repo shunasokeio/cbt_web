@@ -15,51 +15,6 @@ CORS(app)
 
 
 # --- CBT Prompt Logic (adapted from CBT3.ipynb) ---
-def generate_cbt_prompt(cbt_step_question, user_answer, user_profile, past_conversation):
-    system_prompt = (
-        "You are an empathetic and helpful AI assistant designed to support Cognitive Behavioral Therapy (CBT). "
-        "Your role is to analyze the user's responses and help facilitate the CBT process smoothly. "
-        "Your objective is to guide the user in exploring their thoughts and feelings more concretely. "
-        "For ambiguous answers, you will ask one concise, clarifying question and present options for the user to choose from; for specific answers, you will summarize to confirm understanding."
-    )
-    prompt_template = """
-                      # Instructions
-
-                      Please evaluate the user's answer below.
-
-                      1.  **If the answer is ambiguous:**
-                          * Generate one relevant follow-up question to help the user delve deeper.
-                          * Provide three multiple-choice options for that question. Options should be as short and concise as possible.
-                          * Personalize the question and options using the provided [User's Basic Information] and [Relevant Past Conversation].
-                          * Output the response in JSON format with the keys: `\"type\": \"follow-up\"`, `\"question\": \"your_generated_question\"`, and `\"options\": [\"option1\", \"option2\", \"option3\"]`.
-
-                      2.  **If the answer is sufficiently specific:**
-                          * Provide a concise summary of the user's response.
-                          * Output the response in JSON format with the keys: `\"type\": \"summary\"` and `\"summary\": \"your_generated_summary\"`.
-
-                      # Context
-
-                      ### Initial CBT Step Question
-                      {cbt_question}
-
-                      ### User's Answer
-                      {user_answer}
-
-                      ### User's Basic Information
-                      {profile}
-
-                      ### Relevant Past Conversation
-                      {history}
-
-                      # Your Response (in JSON format)
-                      """
-    user_prompt = prompt_template.format(
-        cbt_question=cbt_step_question,
-        user_answer=user_answer,
-        profile=user_profile,
-        history=past_conversation,
-    )
-    return system_prompt, user_prompt
 
 def call_gpt(model: str, prompt: str, sys_prompt: str, api_key: str) -> str:
     client = openai.OpenAI(api_key=api_key)
@@ -177,7 +132,27 @@ def chat():
         * Do NOT make the options questions themselves.
         * Personalize the question and options using the provided [User's Basic Information] and [Relevant Past Conversation].
         * Output the response in JSON format with the keys: `"type": "follow-up"`, `"question": "your_generated_question"`, and `"options": ["option1", "option2", "option3"]`.
-"""
+
+    2.  **If the answer is sufficiently specific:**
+        * Provide a concise summary of the user's response.
+        * Output the response in JSON format with the keys: `"type": "summary"` and `"summary": "your_generated_summary"`.
+
+    # Context
+
+    ### CBT Step {step} Question
+    {cbt_question}
+
+    ### User's Answer
+    {user_input}
+
+    ### User's Basic Information
+    {user_profile}
+
+    ### Relevant Past Conversation
+    {past_conversation}
+
+    # Your Response (in JSON format)
+    """
     
     try:
         print(f"requesting API for step {step}")
